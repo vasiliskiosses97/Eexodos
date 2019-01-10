@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1068173426236",
+    "firebase_url": "https://eexodos-b8f33.firebaseio.com",
+    "project_id": "eexodos-b8f33",
+    "storage_bucket": "eexodos-b8f33.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068173426236:android:48534d9999ac7a62",
+        "android_client_info": {
+          "package_name": "com.domain.eexodos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068173426236-leu4o9jilvp85ei1cu3geaucr1qf61or.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.domain.eexodos",
+            "certificate_hash": "64cd7a7eaba187c9f2b87192019cd91bd1a47e65"
+          }
+        },
+        {
+          "client_id": "1068173426236-o2uiobipf1nnihogb8u8a7ocu3k2hjru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA50KOSZHyvI9Qn0lSYisYl6tRhk0ZDJcA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068173426236-o2uiobipf1nnihogb8u8a7ocu3k2hjru.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
