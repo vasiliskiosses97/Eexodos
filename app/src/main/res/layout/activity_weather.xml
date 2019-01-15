@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/weather"
     android:background="#3F51B5"
-    android:padding="20dp">
+    android:padding="20dp"
+    tools:context=".WeatherActivity">
 
     <TextView
         android:id="@+id/city_field"
@@ -24,16 +26,7 @@
         android:textColor="#FFFFFF"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="13sp" />
-    <TextView
-        android:id="@+id/selectCity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Change City"
-        android:textStyle="italic"
-        android:textSize="11dp"
-        android:textColor="@color/colorAccent"
-        android:layout_below="@+id/updated_field"
-        android:layout_centerHorizontal="true"/>
+
 
     <TextView
         android:id="@+id/weather_icon"

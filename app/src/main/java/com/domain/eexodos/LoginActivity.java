@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 .requestEmail()
                 .build();
 
+        //Syndesi me to Google Api
         googleApiClient = new GoogleApiClient.Builder(this)
             .enableAutoManage(this, this)
             .addApi(Auth.GOOGLE_SIGN_IN_API,gso)

@@ -2,35 +2,36 @@ package com.domain.eexodos;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class WeatherActivity extends AppCompatActivity {
 
-
-    TextView selectCity, cityField, detailsField, currentTemperatureField, humidity_field, pressure_field, weatherIcon, updatedField;
+    TextView cityField, detailsField, currentTemperatureField, humidity_field, pressure_field, weatherIcon, updatedField;
     ProgressBar loader;
     Typeface weatherFont;
-    String city = "Thessaloniki, Gr";
+    String city = "Thessaloniki, GR";
     /* Please Put your API KEY here */
     String OPEN_WEATHER_MAP_API = "effbf5a0330e031f8cb9fbad50ddd0d7";
+    /* Please Put your API KEY here */
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +39,7 @@ public class WeatherActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_weather);
 
-        Toast.makeText(this, "Correct2", Toast.LENGTH_SHORT).show();
-        Log.d("TAG", "onMapReady: Correct2");
-
         loader = (ProgressBar) findViewById(R.id.loader);
-        selectCity = (TextView) findViewById(R.id.selectCity);
         cityField = (TextView) findViewById(R.id.city_field);
         updatedField = (TextView) findViewById(R.id.updated_field);
         detailsField = (TextView) findViewById(R.id.details_field);
@@ -50,43 +47,29 @@ public class WeatherActivity extends AppCompatActivity {
         humidity_field = (TextView) findViewById(R.id.humidity_field);
         pressure_field = (TextView) findViewById(R.id.pressure_field);
         weatherIcon = (TextView) findViewById(R.id.weather_icon);
-        weatherFont = Typeface.createFromAsset(getAssets(), "C:\\Users\\vasil\\AndroidStudioProjects\\Eexodos\\app\\src\\main\\assets\\fonts\\weathericons-regular-webfont.ttf");
+        weatherFont = Typeface.createFromAsset(getAssets(), "fonts/weathericons-regular-webfont.ttf");
         weatherIcon.setTypeface(weatherFont);
 
         taskLoadUp(city);
-
-        selectCity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(WeatherActivity.this);
-                alertDialog.setTitle("Change City");
-                final EditText input = new EditText(WeatherActivity.this);
-                input.setText(city);
-                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.MATCH_PARENT);
-                input.setLayoutParams(lp);
-                alertDialog.setView(input);
-
-                alertDialog.setPositiveButton("Change",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                city = input.getText().toString();
-                                taskLoadUp(city);
-                            }
-                        });
-                alertDialog.setNegativeButton("Cancel",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
-                alertDialog.show();
-            }
-        });
-
     }
 
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        int timeout = 5000; // make the activity visible for 5 seconds
+
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+                finish();
+                Intent homepage = new Intent(WeatherActivity.this, MapsActivity.class);
+                startActivity(homepage);
+            }
+        }, timeout);
+    }
 
     public void taskLoadUp(String query) {
         if (Function.isNetworkAvailable(getApplicationContext())) {
@@ -99,7 +82,7 @@ public class WeatherActivity extends AppCompatActivity {
 
 
 
-    class DownloadWeather extends AsyncTask< String, Void, String > {
+    class DownloadWeather extends AsyncTask < String, Void, String > {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -142,6 +125,4 @@ public class WeatherActivity extends AppCompatActivity {
         }
 
     }
-
-
 }

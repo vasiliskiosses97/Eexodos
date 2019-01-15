@@ -1,6 +1,7 @@
 package com.domain.eexodos;
 
 import android.Manifest;
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,13 +24,9 @@ public class MapsActivity  extends FragmentActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Toast.makeText(this, "Map is Ready", Toast.LENGTH_SHORT).show();
-        Log.d("TAG", "onMapReady: map is ready");
         super.onCreate(savedInstanceState);
         // Retrieve the content view that renders the map.
         setContentView(R.layout.activity_maps);
-
-
 
         // Get the SupportMapFragment and request notification
         // when the map is ready to be used.
@@ -44,6 +41,7 @@ public class MapsActivity  extends FragmentActivity
         Toast.makeText(this, "Map is Ready", Toast.LENGTH_SHORT).show();
         Log.d("TAG", "onMapReady: map is ready");
 
+        //An patiseis to coffee button
         if(MainActivity.button==true) {
             // and move the map's camera to the same location.
             LatLng Coffee_Is_Amp = new LatLng(40.652290, 22.922646);
@@ -202,7 +200,10 @@ public class MapsActivity  extends FragmentActivity
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Mikel_AgSt,12));
 
 
-        } else if(MainActivity.button==false){
+        }
+
+        //An patiseis to psilika button
+        else if(MainActivity.button==false){
 
             LatLng Todaylicious_Eg = new LatLng(40.632122, 22.952216);
             googleMap.addMarker(new MarkerOptions().position(Todaylicious_Eg)
@@ -216,7 +217,7 @@ public class MapsActivity  extends FragmentActivity
 
             LatLng Todaylicious_Po = new LatLng(40.635666, 22.937770);
             googleMap.addMarker(new MarkerOptions().position(Todaylicious_Po)
-                    .title("Todayliciousin Politexniou 57"));
+                    .title("Todaylicious in Politexniou 57"));
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Todaylicious_Po,12));
 
             LatLng Todaylicious_Ag = new LatLng(40.634894, 22.947625);
